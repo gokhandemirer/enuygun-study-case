@@ -1,0 +1,15 @@
+type Employee {
+  id: ID
+  firstName: String @fake(type: firstName)
+  lastName: String @fake(type: lastName)
+  image: String @fake(type: imageUrl)
+  email: String @fake(type: email)
+  phone: String @fake(type: phoneNumber)
+  address: String @fake(type: streetAddress)
+  jobTitle: String @fake(type: jobTitle)
+  vote: Int @fake(type: number)
+}
+
+type Query {
+  employees: [Employee] @listLength(min: 10, max: 25)
+}
