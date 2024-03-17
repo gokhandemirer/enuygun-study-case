@@ -1,0 +1,16 @@
+services:
+  nextapp:
+    container_name: nextapp
+    image: nextapp
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - graphql-faker
+  graphql-faker:
+    image: apisguru/graphql-faker
+    ports:
+      - "9002:9002"
+    volumes:
+      - ./schema.graphql:/workdir/schema.graphql
+    entrypoint: graphql-faker schema.graphql
